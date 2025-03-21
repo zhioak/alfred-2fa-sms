@@ -13,7 +13,7 @@
 
 ![Preview](https://raw.githubusercontent.com/zhioak/pics/master/picgo/2025-03%2FiShot_2025-03-14_17.44.21-f98c44.png)
 
-接收到短息输入2fa，选择对应的短信回车即可粘贴到对应焦点位
+接收到短息后，在Alfred输入2fa，选择对应的验证短信后，回车即可将短信验证码粘贴到焦点输入框
 
 ![Preview](https://raw.githubusercontent.com/zhioak/pics/master/picgo/2025-03%2FiShot_2025-03-14_17.32.16-109bf4.png)
 
