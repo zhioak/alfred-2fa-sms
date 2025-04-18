@@ -8,7 +8,7 @@
 
 ROW_REGEX='^\[?\{"ROWID"\:([[:digit:]]+),"sender"\:"([^"]+)","service"\:"([^"]+)","message_date"\:"([^"]+)","text"\:"([[:print:]][^\\]+)"\}.*$'
 
-DEFAULT_MATCH_REGEX='([[:alnum:]]{4,})'
+DEFAULT_MATCH_REGEX='([a-zA-Z0-9]{4,})'
 
 # 正则映射
 rules=${regexMap}
@@ -94,11 +94,11 @@ if [[ -z "$response" ]]; then
 		"rerun": 1,
 		"items": [
 			{
-				"type": "default", 
-				"valid": "false", 
-				"icon": {"path": "icon.png"}, 
-				"arg": "", 
-				"subtitle": "Searched messages in the last '"$lookBackMinutes"' minutes.", 
+				"type": "default",
+				"valid": "false",
+				"icon": {"path": "icon.png"},
+				"arg": "",
+				"subtitle": "Searched messages in the last '"$lookBackMinutes"' minutes.",
 				"title": "No codes found"
 			}
 		]
@@ -115,30 +115,32 @@ else
 			debug_text " Found message: $message"
 
 			message_quoted=${message//[\"]/\\\"}
-		    
+
 		    # 标记是否找到匹配
 		    local matched=false
 		    # 匹配正则
-		    local MATCH_REGEX=""
-		    
+		    local matchRegex=""
+
 		    # 遍历所有规则
 		    for prefix in $(echo "$rules" | sed 's/[{},]//g' | grep -o '"【[^"]*"' | tr -d '"'); do
 		        # 提取对应的正则表达式
 		        regex=$(echo "$rules" | sed -n "s/.*\"$prefix\": \"\([^\"]*\)\".*/\1/p")
 		        # 检查消息是否以特定前缀开头
 		        if [[ "$message" == "$prefix"* ]]; then
-		            MATCH_REGEX="$regex"
+		            matchRegex="$regex"
 		            break
 		        fi
 		    done
-		    
+
 		    # 如果没有匹配到特定规则，使用默认规则
-		    if [[ -z "$MATCH_REGEX" ]]; then
-		        MATCH_REGEX=$DEFAULT_MATCH_REGEX
+		    if [[ -z "$matchRegex" ]]; then
+		        matchRegex=$DEFAULT_MATCH_REGEX
 		    fi
-			
+
+		    debug_text "Match regex: '$matchRegex'"
+
 			# 匹配验证码
-			if [[ $message =~ $MATCH_REGEX ]]; then
+			if [[ $message =~ $matchRegex ]]; then
 				code=${BASH_REMATCH[1]}
 				debug_text " -- Message: $message"
 				debug_text " -- Found-1 ${code}"
