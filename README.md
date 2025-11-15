@@ -1,3 +1,9 @@
+> **⚠️ 废弃通知**
+>
+> 从2025年9月废弃。随着macOS Tahoe的发布，此功能已内置在操作系统中，不再需要独立工作流。
+> 
+> `Message`的`SQLite`结构有变更，查询短信也GG了。
+
 # 2FA SMS Workflow for Alfred
 
 [alfred-simple-2fa-paste](https://github.com/thebitguru/alfred-simple-2fa-paste)只支持提取Google的短信验证码，基于此优化
