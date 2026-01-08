@@ -1,9 +1,3 @@
-> **⚠️ 废弃通知**
->
-> 从2025年9月废弃。随着macOS Tahoe的发布，此功能已内置在操作系统中，不再需要独立工作流。
-> 
-> `Message`的`SQLite`结构有变更，查询短信也GG了。
-
 # 2FA SMS Workflow for Alfred
 
 [alfred-simple-2fa-paste](https://github.com/thebitguru/alfred-simple-2fa-paste)只支持提取Google的短信验证码，基于此优化
@@ -27,3 +21,6 @@
 ## 特别鸣谢
 
 - [alfred-simple-2fa-paste](https://github.com/thebitguru/alfred-simple-2fa-paste)
+
+## Known Issues
+Starting with macOS Ventura, Apple changed the format of the underlying database (chat.db) where now it saves an encoded version of the message in attributedBody field instead of the simpler, unencoded text field. text is still populated when the message is first received, but gets converted to attributedBody at some later time. This workflow should still work for new messages, but will not find older messages
