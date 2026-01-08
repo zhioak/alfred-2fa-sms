@@ -351,8 +351,10 @@ v=Validation code regex</string>
 			<string>regexMap</string>
 		</dict>
 	</array>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>1.1</string>
+	<string>1.0.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/zhioak/alfred-2fa-sms</string>
 </dict>

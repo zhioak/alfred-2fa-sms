@@ -94,11 +94,11 @@ if [[ -z "$response" ]]; then
 		"rerun": 1,
 		"items": [
 			{
-				"type": "default",
-				"valid": "false",
-				"icon": {"path": "icon.png"},
-				"arg": "",
-				"subtitle": "Searched messages in the last '"$lookBackMinutes"' minutes.",
+				"type": "default", 
+				"valid": "false", 
+				"icon": {"path": "icon.png"}, 
+				"arg": "", 
+				"subtitle": "Searched messages in the last '"$lookBackMinutes"' minutes.", 
 				"title": "No codes found"
 			}
 		]
@@ -115,12 +115,12 @@ else
 			debug_text " Found message: $message"
 
 			message_quoted=${message//[\"]/\\\"}
-
+		    
 		    # 标记是否找到匹配
 		    local matched=false
 		    # 匹配正则
 		    local matchRegex=""
-
+		    
 		    # 遍历所有规则
 		    for prefix in $(echo "$rules" | sed 's/[{},]//g' | grep -o '"【[^"]*"' | tr -d '"'); do
 		        # 提取对应的正则表达式
@@ -131,14 +131,14 @@ else
 		            break
 		        fi
 		    done
-
+		    
 		    # 如果没有匹配到特定规则，使用默认规则
 		    if [[ -z "$matchRegex" ]]; then
 		        matchRegex=$DEFAULT_MATCH_REGEX
 		    fi
-
+		    
 		    debug_text "Match regex: '$matchRegex'"
-
+			
 			# 匹配验证码
 			if [[ $message =~ $matchRegex ]]; then
 				code=${BASH_REMATCH[1]}

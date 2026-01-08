@@ -3,11 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>lookBackMinutes</key>
-	<string>1000000</string>
+	<string>15</string>
 	<key>regexMap</key>
 	<string>{
-        "【Google】": "G-([0-9]{6})",
-        "【Feishu】": "Use ([0-9]{6}) as your verification code"
-    }</string>
+  "【Google】": "G-([0-9]{6})",
+  "【Feishu】": "Use ([0-9]{6}) as your verification code",
+  "【BOSS直聘】": "([0-9]{4,})",
+  "【小红书】": "([0-9]{4,})"
+}</string>
 </dict>
 </plist>
